@@ -1,3 +1,24 @@
+# Hito 1 : "Pizzería Mamma Mía"
+
+## Introducción
+
+Este desafío consiste en desarrollar una aplicación web de **Vite + React**.
+
+
+
+
+## Tecnologias usadas 
+
+HTML, CSS, JavaScript, Boootstrap, git, github, React + Vite.
+
+
+## Autor
+
+**Jenniffer Prieto Espinoza**
+Desarrollo Front-End g95
+Desafío LATAM
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
