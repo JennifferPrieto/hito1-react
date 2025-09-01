@@ -4,5 +4,5 @@ import react from '@vitejs/plugin-react'
  
 export default defineConfig({
   plugins: [react()],
-  base: '/hito1-react/',
+  base: '/hito1-react/hito1-react/',
 });
