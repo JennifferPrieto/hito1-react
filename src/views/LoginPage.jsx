@@ -33,10 +33,10 @@ const LoginPage = () => {
 
 
     return (
-        <div className="card shadow p-4 w-100 " style={{ maxWidth: "500px" }}>
-           
+        <div className="container-fluid d-flex justify-content-center align-items-center flex-grow-1 bg-light">
+         <div className="card shadow p-4 w-100" > 
             <h2 className="text-center mb-4">Login</h2>
-            <form onSubmit={handleSubmit} className="d-flex flex-column  gap-4">
+            <form onSubmit={handleSubmit} className="d-flex flex-column  gap-3">
                 <div>
                     <label htmlFor="email" className="form-label">Email</label>
                 
@@ -60,7 +60,7 @@ const LoginPage = () => {
 
                 </div>
 
-                 <button type="submit" className="btn btn-success">
+                 <button type="submit" className="btn btn-success w-100">
                    Login 
                  </button>
 
@@ -71,6 +71,8 @@ const LoginPage = () => {
                     {isSuccess ? <FaCheckCircle /> : <FaTimesCircle />} {message}
                 </p>
             )}
+
+            </div>
          </div>
         
     );

@@ -15,7 +15,7 @@ const Header = () => {
         height: "300px",
         textShadow: "2px 2px 4px rgba(0,0,0,0.7)",
         
-        filter: 'brightness(0.7)' // Oscurece la imagen
+        filter: 'brightness(0.7)' 
       
     
     }}

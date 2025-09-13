@@ -6,54 +6,26 @@ const CardPizza = ({ name, price, ingredients, img}) => {
         
         <div className="card h-100 shadow-sm border-1 rounded-2 " >
 
-            <img 
-            src={img} 
-            className="card-img-top" 
-            alt={name}
-            
-            />
+            <img src={img} className="card-img-top" alt={name} />
 
             
-           <div className="card-body text-start ">
-            <div className="border-1">
+           <div className="card-body  ">
+            
               <h5 className="card-title ">{name}</h5>
-              <hr  className=""/>
+              <p><strong>Price: ${price}</strong></p>
+              <h6>Ingredients:</h6>
+              <ul>
+                {ingredients.map((ing, i) => (
+                  <li key={i}>{ing}</li>
+                ))}
+              </ul>
+              <button className="btn btn-success w-100">add to Cart:</button>
+              
             </div>
              
            </div>
 
-            <div className="card-body text-center ">
-              
-                 <p className="card-text text-muted ">
-                Ingredientes: <br /> 🍕 {ingredients.join(", ")}
-                </p>
-             
-             
-
-             <hr className="w-100" />
-
-             <p className="card-text fs-4 fw-bold text-dark">
-              Precio: ${price.toLocaleString()}
-
-             </p>
-            </div>
-
-            <div className="d-flex justify-content-center text-center p-3 gap-5">
-              <div>
-                 <button className="btn btn-outline-dark"> Ver más </button>
-              </div>
-              <div>
-                 <button className="btn btn-dark"> Añadir  🛒 </button>
-              </div>
-            
-            </div>
- 
-             
            
-
-            
-          
-        </div>
 
     );
 };

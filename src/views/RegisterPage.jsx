@@ -35,7 +35,7 @@ const RegisterPage = () => {
 
 
     return (
-        <div className="card shadow p-4 w-100" style={{maxWidth: "500px"}}>
+        <div className="card shadow p-4 w-100" >
             <h2 >Register</h2>
             <form onSubmit={handleSubmit} className="d-flex flex-column gap-4">
                 <input 
