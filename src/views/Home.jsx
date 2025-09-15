@@ -1,14 +1,18 @@
 
-import Header from "../components/Header";
-import CardPizza from "../components/CardPizza";
+import Header from "../components/Header.jsx";
+import CardPizza from "../components/CardPizza.jsx";
 import {pizzas} from "../data/pizzas";
 
 const Home = () => {
     return (
-      <div className="container my-5">
-         <h2 className="text-center mb-4"> Nuestro Menú</h2>
-         <div className="d-flex flex-wrap gap-4 justify-content-center">
+      <>
+      <Header />
+
+      <div className="container-fluid py-4">
+         <h2 className=" mb-4"> Our restaurant's menu</h2>
+         <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
             {pizzas.map ((pizza) => (
+              <div className="col" key={pizza.id}>
                <CardPizza
                key={pizza.id}
                name={pizza.name}
@@ -16,9 +20,11 @@ const Home = () => {
                ingredients={pizza.ingredients}
                img={pizza.img}
                />
+               </div>
             ))}
          </div>
       </div>
+      </>
 
          );
       };

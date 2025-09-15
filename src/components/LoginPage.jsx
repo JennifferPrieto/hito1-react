@@ -33,11 +33,12 @@ const LoginPage = () => {
 
 
     return (
-        <div className="container-fluid d-flex justify-content-center align-items-center flex-grow-1 bg-light">
-         <div className="card shadow p-4 w-100" > 
-            <h2 className="text-center mb-4">Login</h2>
+        <div className="container-fluid d-flex align-items-center justify-content-center min-vh-100">
+        <div className="col-12 col-sm-8  col-md-6 col-lg-4">
+         <div className="card shadow p-4 " > 
+            <h2 className="text-center mb-3">Login</h2>
             <form onSubmit={handleSubmit} className="d-flex flex-column  gap-3">
-                <div>
+                <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email</label>
                 
                 <input 
@@ -48,7 +49,7 @@ const LoginPage = () => {
                 onChange={(e) => setEmail(e.target.value)} />
                  </div>
 
-                 <div>
+                 <div className="mb-3">
                 <label htmlFor="password" className="form-label">Password</label>
 
                 <input
@@ -74,6 +75,7 @@ const LoginPage = () => {
 
             </div>
          </div>
+        </div>
         
     );
 };

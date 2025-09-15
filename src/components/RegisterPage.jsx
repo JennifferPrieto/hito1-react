@@ -35,8 +35,10 @@ const RegisterPage = () => {
 
 
     return (
-        <div className="card shadow p-4 w-100" >
-            <h2 >Register</h2>
+        <div className="container-fluid d-flex align-items-center justify-content-center min-vh-100">
+          <div className="col-12 col-sm-8 col-md-6 col-lg-4">
+           <div className="card shadow p-4 " >
+            <h2 className="mb-3 text-center" >Register</h2>
             <form onSubmit={handleSubmit} className="d-flex flex-column gap-4">
                 <input 
                 type="email"
@@ -72,6 +74,8 @@ const RegisterPage = () => {
             )}
 
         </div>
+      </div>
+    </div>
     );
 };
 
