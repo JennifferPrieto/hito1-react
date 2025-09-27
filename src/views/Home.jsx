@@ -1,9 +1,25 @@
-
+import { useEffect, useState } from "react";
 import Header from "../components/Header.jsx";
 import CardPizza from "../components/CardPizza.jsx";
-import {pizzas} from "../data/pizzas";
+
 
 const Home = () => {
+   const [pizzas, setPizzas] = useState([]);
+
+   useEffect(() => {
+      const fetchPizzas = async () => {
+         try {
+            const response = await fetch("http://localhost:5000/api/pizzas");
+            const data = await response.json();
+            setPizzas(data);
+         } catch (error) {
+            console.error("Error al cargar las pizzas:", error);
+         }
+      };
+
+      fetchPizzas();
+   }, []);
+   
     return (
       <>
       <Header />

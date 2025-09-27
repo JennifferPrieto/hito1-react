@@ -1,10 +1,11 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Pizza from "./components/Pizza";
 //import RegisterPage from "./components/RegisterPage";
 //import LoginPage from "./components/LoginPage";
-import Home from "./views/Home";
-import Cart from "./components/Cart";
+//import Home from "./views/Home";
+//import Cart from "./components/Cart";
 
 function App() {
   return (
@@ -15,9 +16,10 @@ function App() {
       <main className="flex-grow-1 w-100">
      
       {/*<Home/>*/}
-      <Cart/>
+      {/*<Cart/>*/}
       {/*<RegisterPage/>*/}
       {/*<LoginPage/>*/}
+      <Pizza/>
       </main> 
 
       <Footer/>
