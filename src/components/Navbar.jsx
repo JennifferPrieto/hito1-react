@@ -1,4 +1,4 @@
-import { link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const Navbar = () => {
@@ -6,44 +6,23 @@ const Navbar = () => {
     
 
     return (
-        <nav className="container-fliud d-flex justify-content-between align-items-center p-2 bg-dark ">
-            <div className="d-flex align-items-center gap-2">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm ">
+            <div className="container">
+                <Link className="navbar-brand fw-bold fs-4 text-danger" to="/" > Pizzería Mamma Mía! </Link>
+                <div className="d-flex align-items-center gap-3">
+                    <Link className="nav-link text-dark" to="/"> 🍕 Home </Link>
+                    
+                    <Link className="nav-link text-dark" to="/register"> Register </Link>
+                    <Link className="nav-link text-dark" to="/login"> Login </Link>
+                    <Link className="btn btn-success px-3 fw-semibold" to="/cart">  🛒  Total: $0 </Link>
 
-            
-           
-                 <p className="text-white fs-5 m-2">Pizzería Mamma Mía!</p>
-                 <button className="btn btn-outline-light">🍕 Home</button>
-
-
-            
-            
-           
-
-            
-            {token ? (
-                <>
-                <button className="btn btn-outline-light ">🔓 Profile</button>
-                <button className="btn btn-outline-light">🔓 Logout</button>
-                </>
-            ) : (
-                <>
-                <button className="btn btn-outline-light" >🔐 Login</button>
-                <button className="btn btn-outline-light">🔐 Register</button>
-                </>
-                
-            )}
-
+                </div>
             </div>
-
-            <div>
-                 <button className="btn btn-outline-info">
-                 🛒  Total: ${total.toLocaleString()}
-            </button>
-            </div>
-            
-
-            
         </nav>
+
+            
+           
+                 
     );
 };
 

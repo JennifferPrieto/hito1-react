@@ -2,16 +2,15 @@ import { Routes, Route} from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-
-import Pizza from "./pages/Pizza";
-import RegisterPage from "./pages/RegisterPage";
-import LoginPage from "./pages/LoginPage";
 import Home from "./pages/Home";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import Pizza from "./pages/Pizza";
 import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 
-function App() {
+const App = () => {
   return (
     <>
     
@@ -38,6 +37,6 @@ function App() {
     
     
   );
-}
+};
 
 export default App;
