@@ -1,9 +1,9 @@
-import React from "react";
+import { link } from "react-router-dom";
 
 
 const Navbar = () => {
-    const total = 25000;
-    const token = false;
+    const total = 0;
+    
 
     return (
         <nav className="container-fliud d-flex justify-content-between align-items-center p-2 bg-dark ">
