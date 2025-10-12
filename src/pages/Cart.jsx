@@ -1,7 +1,7 @@
 import { useCart } from "../context/CartContext";
 
 const Cart= () => {
-    const { cart, addToCart, removeFromCart, total} = useCart();
+    const { cart, addToCart, increaseQuantify, decreaseQuantify, removeFromCart, total} = useCart();
 
 
 
