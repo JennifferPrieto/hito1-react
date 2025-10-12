@@ -15,14 +15,18 @@ const Cart= () => {
                 <>
                 {cart.map((item) => (
                     <div key={item.id} className="d-flex justify-content-between align-items-center border p-2 mb-2">
-                        <div>
-                            <h5>{item.name}</h5>
-                            <p>${item.price.toLocaleString()} x {item.count}</p>
+                        <img src={item.img} alt={item.name} style={{ width:"70px", height:"70px", objectFit:"cover", 
+                            borderRadius:"8px", marginRight:"10px",
+                        }}/>
+
+                        <div className="flex-grow-1">
+                            <h5 className="mb-1">{item.name}</h5>
+                            <p className="mb-0">${item.price.toLocaleString()} x {item.count}</p>
                         </div>
 
                         <div>
                             <button className="btn btn-success btn-sm me-2" onClick={() => increaseQuantify(item.id)}>+</button>
-                            <button className="btn btn-warning btn-sm " onClick={() => decreaseQuantify(item.id)}>-</button>
+                            <button className="btn btn-warning btn-sm me-4" onClick={() => decreaseQuantify(item.id)}>-</button>
                             <button className="btn btn-danger btn-sm " onClick={() => removeFromCart(item.id)}>🗑️</button>
                         </div>
                     </div>
