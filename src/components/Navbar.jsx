@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-
-
+import { useCart } from "../context/CartContext";
+ 
 const Navbar = () => {
-    const total = 0;
+   const { total } = useCart();
     
 
     return (
@@ -14,16 +14,17 @@ const Navbar = () => {
                     
                     <Link className="nav-link text-dark" to="/register"> Register </Link>
                     <Link className="nav-link text-dark" to="/login"> Login </Link>
-                    <Link className="btn btn-success px-3 fw-semibold" to="/cart">  🛒  Total: $0 </Link>
-
+                    <Link className="nav-link" to="/cart"> 
+                     🛒  Total: ${total.toLocaleString()} 
+                    </Link>
                 </div>
             </div>
         </nav>
-
-            
-           
+     
                  
     );
 };
 
 export default Navbar;
+
+ 

@@ -1,4 +1,4 @@
-import { Routes, Route} from "react-router-dom";
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -10,15 +10,15 @@ import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 
-const App = () => {
+export default  function App() {
   return (
-    <>
     
+      <>
+      <Navbar />
       
-      <Navbar/>
+      <main className="container mt-4">
 
-      
-      <Routes>
+       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/pizza/:id" element={<Pizza/>}/>
         <Route path="/cart" element={<Cart/>}/>
@@ -28,15 +28,16 @@ const App = () => {
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+
       
+      </main>
 
       <Footer/>
-    
-  </>
-    
-    
+
+      </>
+
+      
     
   );
-};
+}
 
-export default App;
