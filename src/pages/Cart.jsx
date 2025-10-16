@@ -1,7 +1,9 @@
 import { useCart } from "../context/CartContext";
+import { useUser } from "../context/UserContext";
 
 const Cart= () => {
-    const { cart, addToCart, increaseQuantify, decreaseQuantify, removeFromCart, total} = useCart();
+    const { cart, increaseQuantify, decreaseQuantify, removeFromCart, total} = useCart();
+    const { token } = useUser();
 
 
 
@@ -32,6 +34,8 @@ const Cart= () => {
                     </div>
                 ))}
                 <div className="text-end mt-3 fs-3 fw-bold ">Total: ${total.toLocaleString()}</div>
+
+                <button className="btn btn-primary mt-3" disabled={!token}> Pagar </button>
                 </>
             )}
 

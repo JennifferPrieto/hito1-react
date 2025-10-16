@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
 const CardPizza = ({ pizza, addToCart }) => {
   const {name, price, img, ingredients} = pizza;
@@ -17,12 +17,9 @@ const CardPizza = ({ pizza, addToCart }) => {
             
               <h5 className="card-title mb-2 ">{name}</h5>
               <p className="card-text">${price.toLocaleString()}</p>
-              <h6 className="text-muted mb-2">Ingredients:</h6>
-              <ul>
-                {ingredients?.map((ing, i) => (
-                  <li key={i}>{ing}</li>
-                ))}
-              </ul>
+              
+              <Link to={`/pizza/${pizza.id}`} className="btn btn-primary w-100 mb-2"> Ver más detalles </Link>
+              
               <button className="btn btn-success w-100" onClick={() => addToCart(pizza)}> 
                 Añadir al carrito:
               </button>
