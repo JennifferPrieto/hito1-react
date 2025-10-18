@@ -1,9 +1,21 @@
 import { useCart } from "../context/CartContext";
 import { useUser } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const Cart= () => {
     const { cart, increaseQuantify, decreaseQuantify, removeFromCart, total} = useCart();
     const { token } = useUser();
+    const navigate = useNavigate();
+
+    const handlePay = () => {
+        if (!token) {
+            alert("iniciar sesión para continuar con el pago");
+            navigate("/login");
+            return;
+        }
+
+        alert("¡Gracias por tu compra!");
+    };
 
 
 
@@ -39,7 +51,7 @@ const Cart= () => {
                  
                
                    <button className={`btn ${token ? "btn-success" : "btn-secondary"} px-4 py-2 fw-bold `}
-                   disabled={!token}>
+                   onClick={handlePay}>
                     {token ? "Pagar" : "Iniciar sesión para pagar"}
                    </button>
                
