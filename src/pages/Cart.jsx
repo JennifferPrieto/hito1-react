@@ -33,9 +33,18 @@ const Cart= () => {
                         </div>
                     </div>
                 ))}
-                <div className="text-end mt-3 fs-3 fw-bold ">Total: ${total.toLocaleString()}</div>
 
-                <button className="btn btn-primary mt-3" disabled={!token}> Pagar </button>
+                <div className="d-flex justify-content-end align-items-center p-3 mt-4 gap-5">
+                <h4 className="fw-bold mb-0 ">Total: ${total.toLocaleString()}</h4>
+                 
+               
+                   <button className={`btn ${token ? "btn-success" : "btn-secondary"} px-4 py-2 fw-bold `}
+                   disabled={!token}>
+                    {token ? "Pagar" : "Iniciar sesión para pagar"}
+                   </button>
+               
+                 </div>
+                
                 </>
             )}
 

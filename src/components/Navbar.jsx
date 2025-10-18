@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { useUser } from "../context/UserContext";
- 
+import { useCart } from "../context/CartContext";
+
 const Navbar = () => {
    const { token, logout } = useUser();
+   const { total } = useCart();
     
 
     return (
@@ -25,6 +27,8 @@ const Navbar = () => {
                         </>
 
                     )}
+
+                    <Link className="nav-link text-dark" to="/cart"> 🛒Total: ${total.toLocaleString()}</Link>
                     
                     
                 </div>
