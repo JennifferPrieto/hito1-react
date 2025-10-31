@@ -12,12 +12,13 @@ export const UserProvider = ({ children }) => {
             const res = await fetch("http://localhost:5000/api/auth/login", {
                 method: "POST",
                 headers: {"Content-Type": "application/json" },
-                body: JSON.stringify({ emailInput, password }),
+                body: JSON.stringify({ email: emailInput, password }),
             });
 
-             if (!res.ok) throw new Error(data.message || "Error al iniciar sesión");
-
             const data = await res.json();
+            if (!res.ok) throw new Error(data.message || "Error al iniciar sesión");
+
+            
             setToken(data.token);
             setEmail(data.email);
 
@@ -35,12 +36,12 @@ export const UserProvider = ({ children }) => {
             const res = await fetch("http://localhost:5000/api/auth/register", {
                 method: "POST",
                 headers: {"Content-Type": "application/json" },
-                body: JSON.stringify({ emailInput, password }),
+                body: JSON.stringify({ email: emailInput, password }),
             });
             
-
-            if (!res.ok) throw new Error(data.message || "Error al registrarse");
             const data = await res.json();
+            if (!res.ok) throw new Error(data.message || "Error al registrarse");
+            
             setToken(data.token);
             setEmail(data.email);
 
@@ -49,6 +50,7 @@ export const UserProvider = ({ children }) => {
             setError(null);
         } catch (err) {
             setError(err.message);
+            throw err;
         }
     };
 
@@ -61,9 +63,10 @@ export const UserProvider = ({ children }) => {
                 },
             });
 
-            if (!res.ok) throw new Error(data.message || "Error al obtener el perfil");
-
             const data = await res.json();
+            if (!res.ok) throw new Error(data.message || "Error al obtener el perfil");
+            
+            
             setEmail(data.email);
         } catch (err) {
             setError(err.message);
@@ -88,6 +91,7 @@ export const UserProvider = ({ children }) => {
          value={{
             token,
             email,
+            error,
             login,
             register,
             logout,

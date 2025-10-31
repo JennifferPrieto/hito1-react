@@ -20,14 +20,20 @@ const RegisterPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError("")
 
         if (form.password !== form.confirmPassword) {
             setError("Las contraseñas no coinciden");
             return;
         }
+
+        try {
+            await register(form.email, form.password);
+            navigate("/profile");
+        } catch (err) {
+            setError(err.message);
+        }
         
-        await register(form.email, form.password);
-        navigate("/profile");
     };
 
 
