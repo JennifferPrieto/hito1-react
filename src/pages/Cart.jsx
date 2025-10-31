@@ -7,14 +7,31 @@ const Cart= () => {
     const { token } = useUser();
     const navigate = useNavigate();
 
-    const handlePay = () => {
+    const handlePay = async () => {
         if (!token) {
             alert("iniciar sesión para continuar con el pago");
             navigate("/login");
             return;
         }
 
-        alert("¡Gracias por tu compra!");
+        try {
+            const res = await fetch("http://localhost:5000/api/checkouts", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({ cart }),
+            });
+
+            if (!res.ok) throw new Error("Error al procesar el pago");
+
+            alert("¡Gracias por tu compra!");
+        } catch (error) {
+            alert(error.message);
+        }
+
+       
     };
 
 

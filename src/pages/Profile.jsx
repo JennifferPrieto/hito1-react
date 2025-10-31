@@ -1,20 +1,24 @@
-import { Alert } from "bootstrap";
+import { useEffect } from "react";
+import { useUser } from "../context/UserContext";
 
 const Profile = () => {
-    const userEmail ="usuario@correo.com";
+    const { email, getProfile, logout } = useUser();
 
-    const handleLogout = () => {
-        alert("Sesión cerrada");
-    };
-
+    useEffect(() => {
+        getProfile();
+    }, []);
 
     return (
-        <div  className="container my-5 text-center">
-            <h2 className="mb-4">Perfil de usuario</h2>
-            <p><strong>Email:</strong> {userEmail}</p>
-            <button className="btn btn-danger mt-3" onClick={handleLogout}>Cerrar Sesión</button>
+      <div className="container mt-5 text-center">
+        <h3> Perfil del usuario </h3>
+        <p className="fs-5 mt-3">
+            <strong>Email:</strong> {email || "Cargando..."}
+        </p>
+        <button className="btn btn-danger mt-3" onClick={logout}>
+            Cerrar sesión
+        </button>
 
-        </div>
+      </div>
     );
 };
 

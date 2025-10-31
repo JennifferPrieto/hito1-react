@@ -1,36 +1,29 @@
 import React, { useState} from "react";
-import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import { useUser } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [message, setMessage] = useState(null);
-    const [isSuccess, setIsSuccess] = useState(false);
+    const { login } = useUser();
+    const navigate = useNavigate();
 
-    const handleSubmit =(e) => {
-        e.preventDefault();
+    const [form, setForm] = useState({ email: "", password: "" });
+    const [error, setError] = useState("");
 
-       if (!email || !password ) {
-        setMessage("Todos los campos son obligatorios." );
-        setIsSuccess(false);
-        return;
-       }
-
-       if (password.length < 6) {
-        setMessage("La contraseña debe tener al menos 6 caracteres.");
-        setIsSuccess(false);
-        return;
-       }
-
-       
-        setMessage("Inicio de sesión exitoso!");
-        setIsSuccess(true);
-      
-
-       
-       
+    const handleChange = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value });
     };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+           await login(form.email, form.password);
+        navigate("/profile"); 
+        } catch (err) {
+            setError("Correo o contraseña incorrectos");
+        }
+        
+    };
 
     return (
         <div className="container-fluid d-flex align-items-center justify-content-center min-vh-100">
@@ -42,24 +35,30 @@ const LoginPage = () => {
                     <label htmlFor="email" className="form-label">Email</label>
                 
                 <input 
+                name="email"
                 type="email"
                 placeholder="Enter your email"
                 className="form-control"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)} />
+                value={form.email}
+                onChange={handleChange}
+                required />
                  </div>
 
                  <div className="mb-3">
                 <label htmlFor="password" className="form-label">Password</label>
 
                 <input
+                 name="password"
                  type="password"
                  placeholder="Enter your password"
                  className="form-control"
-                 value={password}
-                 onChange={(e) => setPassword(e.target.value)} />
+                 value={form.password}
+                 onChange={handleChange} 
+                 required/>
 
                 </div>
+
+                {error && <p className="text-danger text-center">{error}</p>}
 
                  <button type="submit" className="btn btn-success w-100">
                    Login 
@@ -67,11 +66,7 @@ const LoginPage = () => {
 
             </form>
 
-            {message && (
-                <p className={`mt-3 ${isSuccess ? "text-success" : "text-danger" }`}>
-                    {isSuccess ? <FaCheckCircle /> : <FaTimesCircle />} {message}
-                </p>
-            )}
+            
 
             </div>
          </div>
