@@ -1,49 +1,59 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-    const [token, setToken] = useState(null);
-    const [email, setEmail] = useState(null);
+    const [token, setToken] = useState(localStorage.getItem("token") || "");
+    const [email, setEmail] = useState(localStorage.getItem("email") || "");
+    const [error, setError] = useState(null);
 
-    const login = async (email, password) => {
+    const login = async (emailInput, password) => {
         try {
             const res = await fetch("http://localhost:5000/api/auth/login", {
                 method: "POST",
                 headers: {"Content-Type": "application/json" },
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({ emailInput, password }),
             });
 
+             if (!res.ok) throw new Error(data.message || "Error al iniciar sesión");
+
             const data = await res.json();
-
-            if (!res.ok) throw new Error(data.message || "Error al iniciar sesión");
-
             setToken(data.token);
             setEmail(data.email);
-        } catch (error) {
-            alert(error.message);
+
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("email", data.email);
+            setError(null);
+        } catch (err) {
+            setError(err.message);
+            throw err;
         }
     };
 
-    const register = async (email, password) => {
+    const register = async (emailInput, password) => {
         try {
             const res = await fetch("http://localhost:5000/api/auth/register", {
                 method: "POST",
                 headers: {"Content-Type": "application/json" },
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({ emailInput, password }),
             });
-            const data = await res.json();
+            
 
             if (!res.ok) throw new Error(data.message || "Error al registrarse");
-
+            const data = await res.json();
             setToken(data.token);
             setEmail(data.email);
-        } catch (error) {
-            alert(error.message);
+
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("email", data.email);
+            setError(null);
+        } catch (err) {
+            setError(err.message);
         }
     };
 
     const  getProfile = async () => {
+        if (!token) return;
         try {
             const res = await fetch("http://localhost:5000/api/auth/me", {
                 headers: {
@@ -51,22 +61,27 @@ export const UserProvider = ({ children }) => {
                 },
             });
 
-            const data = await res.json();
+            if (!res.ok) throw new Error(data.message || "Error al obtener el perfil");
 
-            if (res.ok) {
-                setEmail(data.email);
-            } else {
-                throw new Error("No se pudo obtener el perfil");
-            }  
-        } catch (error) {
-            console.error(error);
+            const data = await res.json();
+            setEmail(data.email);
+        } catch (err) {
+            setError(err.message);
+            logout();
         }
+      
     };
 
     const logout = () => {
-        setToken(null);
-        setEmail(null);
+        setToken("");
+        setEmail("");
+        localStorage.removeItem("token");
+        localStorage.removeItem("email");
     };
+
+    useEffect(() => {
+        if (token) getProfile();
+    }, [token]);
 
     return (
         <UserContext.Provider

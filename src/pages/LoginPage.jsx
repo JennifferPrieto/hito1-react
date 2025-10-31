@@ -15,6 +15,7 @@ const LoginPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError("");
 
         try {
            await login(form.email, form.password);
