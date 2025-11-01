@@ -8,22 +8,43 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--text-light);
+  overflow: hidden;
   
+  
+}
+.pizzaHeader__fade {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
 }
 
 .pizzaHeader__center{
+  position: relative;
   z-index: 2;
   text-align: center;
-  padding: 2rem;
+  padding: 1rem;
 }
 
-.pizzaHeader__card{
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 100px ;
-    
 
-    
+
+@media (max-width: 768px) {
+  .pizzaHeader {
+    height: 70vh;
+  }
+
+  .pizzaHeader__card {
+    padding: 1.5rem;
+  }
+
+  .pizzaHeader__card h1 {
+    font-size: 1.8rem;
+  }
+
+  .pizzaHeader__card p {
+    font-size: 1rem;
+  }
+  
 }
 
 

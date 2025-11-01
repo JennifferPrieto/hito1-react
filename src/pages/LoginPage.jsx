@@ -27,18 +27,18 @@ const LoginPage = () => {
     };
 
     return (
-        <div className="container-fluid d-flex align-items-center justify-content-center min-vh-100">
+        <div className="container-fluid d-flex align-items-center justify-content-center  min-vh-100 ">
         <div className="col-12 col-sm-8  col-md-6 col-lg-4">
          <div className="card shadow p-4 " > 
-            <h2 className="text-center mb-3">Login</h2>
+            <h2 className="text-center mb-3">Ingresar</h2>
             <form onSubmit={handleSubmit} className="d-flex flex-column  gap-3">
                 <div className="mb-3">
-                    <label htmlFor="email" className="form-label">Email</label>
+                   
                 
                 <input 
                 name="email"
                 type="email"
-                placeholder="Enter your email"
+                placeholder="Correo electrónico"
                 className="form-control"
                 value={form.email}
                 onChange={handleChange}
@@ -46,12 +46,12 @@ const LoginPage = () => {
                  </div>
 
                  <div className="mb-3">
-                <label htmlFor="password" className="form-label">Password</label>
+                
 
                 <input
                  name="password"
                  type="password"
-                 placeholder="Enter your password"
+                 placeholder="Contraseña"
                  className="form-control"
                  value={form.password}
                  onChange={handleChange} 
@@ -62,7 +62,7 @@ const LoginPage = () => {
                 {error && <p className="text-danger text-center">{error}</p>}
 
                  <button type="submit" className="btn btn-success w-100">
-                   Login 
+                   Iniciar sesión 
                  </button>
 
             </form>

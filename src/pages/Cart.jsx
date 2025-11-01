@@ -38,10 +38,10 @@ const Cart= () => {
 
     return (
 
-        <div className="container mt-4">
-            <h2>🛒 Tu carrito</h2>
+        <div className="container py-5">
+            <h2 className="mb-4 text-center text-danger fw-bold ">🛒 Tu carrito</h2>
             {cart.length === 0 ? (
-                <p>No hay pizzas en el carrito.</p>
+                <p className="text-center text-muted">No hay pizzas en el carrito.</p>
             ) : (
                 <>
                 {cart.map((item) => (
@@ -55,9 +55,9 @@ const Cart= () => {
                             <p className="mb-0">${item.price.toLocaleString()} x {item.count}</p>
                         </div>
 
-                        <div>
-                            <button className="btn btn-success btn-sm me-2" onClick={() => increaseQuantify(item.id)}>+</button>
-                            <button className="btn btn-warning btn-sm me-4" onClick={() => decreaseQuantify(item.id)}>-</button>
+                        <div className="d-flex justify-content-center align-items-center gap-1">
+                            <button className="btn btn-success btn-sm me-1 " onClick={() => increaseQuantify(item.id)}>+</button>
+                            <button className="btn btn-warning btn-sm me-2" onClick={() => decreaseQuantify(item.id)}>-</button>
                             <button className="btn btn-danger btn-sm " onClick={() => removeFromCart(item.id)}>🗑️</button>
                         </div>
                     </div>

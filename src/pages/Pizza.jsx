@@ -47,7 +47,7 @@ const Pizza = () => {
                         </ul>
                     </div>
 
-                    <div className="d-flex justify-content-between align-items-center mt-4">
+                    <div className="d-flex justify-content-between align-items-center mt-4 gap-4">
                         <h4 className="text-success fw-bold">${pizza.price}</h4>
                         <button className="btn btn-danger">Añadir al carrito 🛒 </button>
 

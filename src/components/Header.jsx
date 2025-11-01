@@ -21,8 +21,7 @@ const Header = () => {
             <div className="pizzaHeader__card text-center">
                  <h1 className="fw-bold fs-1 text-white">Pizzería Mamma Mía!</h1>
                  <p className="fs-5 text-white ">¡Tenemos las mejores pizzas que podrás encontrar!</p>
-                 <hr className="border-2 mx-auto" style={{ width: "60%", borderColor: "white" }} />
-
+                 
             </div>
 
         </div>

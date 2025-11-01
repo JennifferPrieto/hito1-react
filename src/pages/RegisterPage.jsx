@@ -39,31 +39,32 @@ const RegisterPage = () => {
 
 
     return (
-        <div className="container-fluid d-flex align-items-center justify-content-center min-vh-100">
+        <div className="container-fluid d-flex align-items-center justify-content-center min-vh-100 ">
           <div className="col-12 col-sm-8 col-md-6 col-lg-4">
            <div className="card shadow p-4 " >
-            <h2 className="mb-3 text-center" >Register</h2>
+            <h2 className="mb-3 text-center" >Registrarse</h2>
             <form onSubmit={handleSubmit} className="d-flex flex-column gap-4">
                 <input 
                 name="email"
                 type="email"
-                placeholder="Email"
+                placeholder="Correo electrónico"
                 className="form-control"
                 value={form.email}
-                onChange={handleChange} />
+                onChange={handleChange}
+                required />
 
                 <input
                 name="password"
                  type="password"
-                 placeholder="Password"
+                 placeholder="Contraseña"
                  className="form-control"
                  value={form.password}
-                 onChange={handleChange} />
+                 onChange={handleChange} required />
 
                  <input 
                  type="password"
                  name="confirmPassword"
-                 placeholder="Confirm password" 
+                 placeholder="Confirmar contraseña" 
                  className="form-control"
                  value={form.confirmPassword}
                  onChange={handleChange} required/>
@@ -72,7 +73,7 @@ const RegisterPage = () => {
                  
 
                  <button type="submit" className="btn btn-success">
-                    Register
+                    Continuar
                  </button>
 
             </form>

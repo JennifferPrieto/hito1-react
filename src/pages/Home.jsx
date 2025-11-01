@@ -32,14 +32,16 @@ const Home = () => {
          <Header/>
       
 
-      <div className="container-fluid py-4">
-         <h2 className=" mb-4 text-center"> Our restaurant's menu</h2>
-         <div className="row row-cold-1 row-cols-sm-2 row-cols-lg-3 g-4">
+      <div className="container-fluid py-5">
+         <h2 className=" mb-4 text-center text-danger fw-bold">
+              Bienvenido a nuestro menú
+         </h2>
+         <div className="row row-cold-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
             {pizzas.length > 0 ? (
                pizzas.map((pizza) => (
-                  <div className="col" key={pizza.id}>
-                     <CardPizza pizza={pizza} addToCart={addToCart} />
-                  </div>
+                  
+                     <CardPizza key={pizza.id} pizza={pizza} addToCart={addToCart} />
+                  
                ))
             ) : (
                <p className="text-center">Cargando pizzas...</p>
